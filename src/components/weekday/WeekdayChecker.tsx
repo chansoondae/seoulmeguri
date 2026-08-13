@@ -113,7 +113,7 @@ export function WeekdayChecker() {
             <li key={area.slug}>
               <Link
                 href={`/areas/${area.slug}`}
-                className="flex items-center gap-3 rounded-2xl border p-3 md:p-4 no-underline transition-colors"
+                className="flex items-center gap-2 sm:gap-3 rounded-2xl border p-3 md:p-4 no-underline transition-colors"
                 style={{
                   borderColor: "var(--line)",
                   background: state
@@ -123,17 +123,17 @@ export function WeekdayChecker() {
               >
                 <span
                   aria-hidden
-                  className="inline-block w-2.5 h-8 rounded-full"
+                  className="shrink-0 inline-block w-2.5 h-8 rounded-full"
                   style={{ background: KEY_COLOR_VAR[area.keyColor] }}
                 />
                 <span
                   aria-hidden
-                  className="t-data text-lg w-6 text-center"
+                  className="shrink-0 t-data text-lg w-6 text-center"
                   style={{ color: "var(--ink)" }}
                 >
                   {state ? OPEN_STATE_SYMBOL[state] : "―"}
                 </span>
-                <span className="flex-1">
+                <span className="flex-1 min-w-0">
                   <span className="t-title block text-ink">{area.nameJa}</span>
                   <span
                     className="t-body-s block"
@@ -141,9 +141,9 @@ export function WeekdayChecker() {
                   >
                     {selected ? OPEN_STATE_LABEL[state!] : area.tagline}
                     {selected && state === "closed"
-                      ? "。今日は避けて別エリアへ"
+                      ? "。今日は別エリアへ"
                       : selected && state === "partial"
-                      ? "。一部だけ休みなので目的次第"
+                      ? "。目的次第"
                       : selected && state === "good"
                       ? "。ほぼ全部開いてます"
                       : ""}
@@ -151,7 +151,7 @@ export function WeekdayChecker() {
                 </span>
                 <span
                   aria-hidden
-                  className="t-body-s"
+                  className="shrink-0 t-body-s"
                   style={{ color: "var(--ink-2)" }}
                 >
                   →

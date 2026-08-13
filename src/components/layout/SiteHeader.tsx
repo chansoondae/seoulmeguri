@@ -3,23 +3,26 @@ import Link from "next/link";
 export function SiteHeader() {
   return (
     <header className="border-b border-line bg-paper/90 backdrop-blur sticky top-0 z-40">
-      <div className="container-narrow flex items-center justify-between h-14">
+      <div className="container-narrow flex items-center justify-between gap-3 h-14">
         <Link
           href="/"
-          className="t-title text-ink no-underline flex items-center gap-2"
+          className="t-title text-ink no-underline flex items-center gap-2 min-w-0 whitespace-nowrap"
           aria-label="Seoulmeguri トップへ"
         >
           <span
             aria-hidden
-            className="inline-block w-3 h-3 rounded-full"
+            className="shrink-0 inline-block w-3 h-3 rounded-full"
             style={{ background: "var(--brand-blush)" }}
           />
-          <span>Seoulmeguri</span>
-          <span className="t-caption ml-1" style={{ color: "var(--ink-2)" }}>
+          <span className="whitespace-nowrap">Seoulmeguri</span>
+          <span
+            className="t-caption ml-1 hidden sm:inline whitespace-nowrap"
+            style={{ color: "var(--ink-2)" }}
+          >
             ソウルめぐり
           </span>
         </Link>
-        <nav className="flex items-center gap-4 t-body-s">
+        <nav className="flex items-center gap-3 sm:gap-4 t-body-s shrink-0 whitespace-nowrap">
           <Link href="/#areas" className="text-ink no-underline hover:underline">
             エリア
           </Link>
