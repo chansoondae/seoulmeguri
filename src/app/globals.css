@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------- */
+/* Design tokens                                       */
+/* -------------------------------------------------- */
+
+:root {
+  /* Brand palette (surfaces / accents only, never small text on them) */
+  --brand-orchid: #cdb4db;
+  --brand-petal: #ffc8dd;
+  --brand-blush: #ffafcc;
+  --brand-ice: #bde0fe;
+  --brand-sky: #a2d2ff;
+
+  /* Ink & paper */
+  --ink: #2b2130;
+  --ink-2: #6e6377;
+  --ink-3: #a79fae;
+  --paper: #fffcfe;
+  --paper-2: #f8f3f9;
+
+  /* Semantic */
+  --accent: #d6407c;
+  --accent-ink: #ffffff;
+  --link: #2e6fb7;
+  --warn: #b54708;
+  --line: #ede4f0;
+
+  /* Radii */
+  --r-card: 20px;
+  --r-image: 16px;
+  --r-pill: 999px;
+}
+
+@theme inline {
+  --color-brand-orchid: var(--brand-orchid);
+  --color-brand-petal: var(--brand-petal);
+  --color-brand-blush: var(--brand-blush);
+  --color-brand-ice: var(--brand-ice);
+  --color-brand-sky: var(--brand-sky);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-link: var(--link);
+  --color-warn: var(--warn);
+  --color-line: var(--line);
+
+  --font-display: var(--font-zen-maru), "Hiragino Maru Gothic Pro",
+    "Yu Gothic", sans-serif;
+  --font-body: var(--font-zen-kaku), "Hiragino Kaku Gothic Pro",
+    "Yu Gothic", sans-serif;
+  --font-data: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* -------------------------------------------------- */
+/* Base                                                */
+/* -------------------------------------------------- */
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand-petal);
+  color: var(--ink);
+}
+
+/* -------------------------------------------------- */
+/* Type scale                                          */
+/* -------------------------------------------------- */
+
+.t-display-l {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 40px);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+.t-display-m {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 4.4vw, 28px);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.t-body-s {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.t-caption {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.t-data {
+  font-family: var(--font-data);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------- */
+/* Link                                                */
+/* -------------------------------------------------- */
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Focus ring */
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* -------------------------------------------------- */
+/* Layout container                                    */
+/* -------------------------------------------------- */
+
+.container-narrow {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (min-width: 768px) {
+  .container-narrow {
+    padding-inline: 32px;
+  }
+}
+
+/* -------------------------------------------------- */
+/* Reduced motion                                      */
+/* -------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
