@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SITE_URL, SITE_NAME, SITE_INSTAGRAM } from "@/lib/site";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const zenMaru = Zen_Maru_Gothic({
   subsets: ["latin"],
@@ -116,6 +117,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
+        <GoogleAnalytics />
       </body>
     </html>
   );
