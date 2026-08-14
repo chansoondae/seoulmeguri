@@ -43,6 +43,30 @@ export const OPEN_STATE_LABEL: Record<OpenState, string> = {
 };
 
 /**
+ * More explicit labels used for aria-label / structured data / anywhere the
+ * text is quoted out of context (AI crawlers, screen readers).
+ */
+export const OPEN_STATE_LABEL_FORMAL: Record<OpenState, string> = {
+  good: "通常営業",
+  partial: "一部制限あり",
+  closed: "休業",
+};
+
+/**
+ * schema.org DayOfWeek enum values. Used when emitting
+ * OpeningHoursSpecification.dayOfWeek in JSON-LD.
+ */
+export const WEEKDAY_SCHEMA: Record<Weekday, string> = {
+  mon: "https://schema.org/Monday",
+  tue: "https://schema.org/Tuesday",
+  wed: "https://schema.org/Wednesday",
+  thu: "https://schema.org/Thursday",
+  fri: "https://schema.org/Friday",
+  sat: "https://schema.org/Saturday",
+  sun: "https://schema.org/Sunday",
+};
+
+/**
  * Returns the weekday in Korea Standard Time regardless of the client TZ.
  * Japan and Korea are both UTC+9 so this is mainly documentation, but we
  * keep the timezone explicit to protect against future changes.

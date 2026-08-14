@@ -33,7 +33,8 @@ export const hannam: Area = {
     sat: "good",
     sun: "partial",
   },
-  weekdayNote: "月曜全滅・日曜はギャラリーが閉まる。ベストは水〜土",
+  weekdayNote:
+    "漢南エリアはリウム美術館とペースギャラリーが月曜休館、ペースギャラリーはさらに日曜も休みとなるため、ギャラリー巡り目的なら水曜〜土曜が最適です。ショップとカフェだけなら月曜・日曜も動きます。",
   weekdayTable: [
     {
       facility: "リウム美術館",
@@ -112,6 +113,17 @@ export const hannam: Area = {
         "駅から坂を10分登ります",
       ],
       naverMapUrl: "https://map.naver.com/p/search/리움미술관",
+      placeType: "Museum",
+      address: "ソウル特別市龍山区梨泰院路55キル60-16",
+      geo: { latitude: 37.5384, longitude: 126.9990 },
+      structuredHours: [
+        {
+          dayOfWeek: ["tue", "wed", "thu", "fri", "sat", "sun"],
+          opens: "10:00",
+          closes: "18:00",
+        },
+      ],
+      specialClosedDays: ["mon"],
     },
     {
       time: "12:15",
@@ -130,6 +142,17 @@ export const hannam: Area = {
       fee: "無料",
       walkFromPrev: "徒歩10分",
       naverMapUrl: "https://map.naver.com/p/search/페이스갤러리",
+      placeType: "Museum",
+      address: "ソウル特別市龍山区梨泰院路262",
+      geo: { latitude: 37.5359, longitude: 127.0025 },
+      structuredHours: [
+        {
+          dayOfWeek: ["tue", "wed", "thu", "fri", "sat"],
+          opens: "10:00",
+          closes: "18:00",
+        },
+      ],
+      specialClosedDays: ["mon", "sun"],
     },
     {
       time: "14:45",
@@ -186,8 +209,9 @@ export const hannam: Area = {
   pitfalls: [
     {
       severity: "danger",
-      title: "月曜全滅、日曜はギャラリーが閉まる",
-      body: "リウムもペースも月曜休館。日曜はギャラリー系がほぼ休みで、カフェとショップだけ動くイメージになります。ベストは水〜土。",
+      title:
+        "漢南のギャラリー巡りは月曜休館、ペースギャラリーは日曜も休み",
+      body: "リウム美術館とペースギャラリーは月曜休館。ペースギャラリーはさらに日曜も休みなので、漢南のギャラリー巡り目的なら水曜〜土曜が最適です。日曜はカフェとショップだけ動くイメージになります。",
     },
     {
       severity: "warn",

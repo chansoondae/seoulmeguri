@@ -33,7 +33,8 @@ export const gangnam: Area = {
     sat: "good",
     sun: "good",
   },
-  weekdayNote: "ほぼ全施設が年中無休。月曜に予定が崩れたときの受け皿",
+  weekdayNote:
+    "江南エリアは狎鴎亭ロデオ・ハウス島山・奉恩寺・ピョルマダン図書館など主要施設がほぼ全て年中無休なので、月曜に他エリアが休みで予定が崩れたときの受け皿として機能します（宣陵・靖陵のみ月曜休み）。",
   weekdayTable: [
     {
       facility: "狎鴎亭ロデオ通り",
@@ -149,6 +150,16 @@ export const gangnam: Area = {
       hours: "5:00-22:00",
       walkFromPrev: "タクシー15分",
       naverMapUrl: "https://map.naver.com/p/search/봉은사",
+      placeType: "PlaceOfWorship",
+      address: "ソウル特別市江南区奉恩寺路531",
+      geo: { latitude: 37.5150, longitude: 127.0577 },
+      structuredHours: [
+        {
+          dayOfWeek: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+          opens: "05:00",
+          closes: "22:00",
+        },
+      ],
     },
     {
       time: "18:15",
@@ -158,6 +169,16 @@ export const gangnam: Area = {
       hours: "10:30-22:00",
       walkFromPrev: "徒歩5分",
       naverMapUrl: "https://map.naver.com/p/search/별마당 도서관",
+      placeType: "LandmarksOrHistoricalBuildings",
+      address: "ソウル特別市江南区永東大路513（COEX MALL内）",
+      geo: { latitude: 37.5115, longitude: 127.0595 },
+      structuredHours: [
+        {
+          dayOfWeek: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+          opens: "10:30",
+          closes: "22:00",
+        },
+      ],
     },
   ],
   extras: [

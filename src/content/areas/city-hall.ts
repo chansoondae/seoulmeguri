@@ -33,7 +33,8 @@ export const cityHall: Area = {
     sat: "good",
     sun: "good",
   },
-  weekdayNote: "月曜はほぼ全滅。火〜日に行ってね",
+  weekdayNote:
+    "市庁・貞洞エリアは、月曜日に徳寿宮・守門将交代式・ソウル市立美術館・ソウル図書館が同時休館となり、1日コースが成立しません。訪問は火曜〜日曜にしてください。",
   weekdayTable: [
     {
       facility: "徳寿宮",
@@ -108,6 +109,17 @@ export const cityHall: Area = {
       fee: "大人1,000ウォン（韓服着用で無料）",
       hours: "9:00-21:00 / 月曜休み",
       naverMapUrl: "https://map.naver.com/p/search/덕수궁",
+      placeType: "LandmarksOrHistoricalBuildings",
+      address: "ソウル特別市中区世宗大路99",
+      geo: { latitude: 37.5658, longitude: 126.9751 },
+      structuredHours: [
+        {
+          dayOfWeek: ["tue", "wed", "thu", "fri", "sat", "sun"],
+          opens: "09:00",
+          closes: "21:00",
+        },
+      ],
+      specialClosedDays: ["mon"],
     },
     {
       time: "11:00",
@@ -137,6 +149,9 @@ export const cityHall: Area = {
       spiceLevel: 2,
       walkFromPrev: "徒歩10分",
       naverMapUrl: "https://map.naver.com/p/search/북창동 순두부 본점",
+      placeType: "Restaurant",
+      address: "ソウル特別市中区北倉洞一帯",
+      geo: { latitude: 37.5641, longitude: 126.9788 },
     },
     {
       time: "13:40",
@@ -168,6 +183,22 @@ export const cityHall: Area = {
       hours: "10:00-20:00 / 月曜休み",
       walkFromPrev: "徒歩5分",
       naverMapUrl: "https://map.naver.com/p/search/서울시립미술관",
+      placeType: "Museum",
+      address: "ソウル特別市中区徳寿宮キル61",
+      geo: { latitude: 37.5643, longitude: 126.9738 },
+      structuredHours: [
+        {
+          dayOfWeek: ["tue", "wed", "thu", "fri"],
+          opens: "10:00",
+          closes: "20:00",
+        },
+        {
+          dayOfWeek: ["sat", "sun"],
+          opens: "10:00",
+          closes: "19:00",
+        },
+      ],
+      specialClosedDays: ["mon"],
     },
     {
       time: "16:30",
@@ -186,6 +217,22 @@ export const cityHall: Area = {
       hours: "火〜金 9:00-21:00 / 土日 9:00-18:00 / 月曜休み",
       walkFromPrev: "徒歩8分",
       naverMapUrl: "https://map.naver.com/p/search/서울도서관",
+      placeType: "LandmarksOrHistoricalBuildings",
+      address: "ソウル特別市中区世宗大路110",
+      geo: { latitude: 37.5665, longitude: 126.9779 },
+      structuredHours: [
+        {
+          dayOfWeek: ["tue", "wed", "thu", "fri"],
+          opens: "09:00",
+          closes: "21:00",
+        },
+        {
+          dayOfWeek: ["sat", "sun"],
+          opens: "09:00",
+          closes: "18:00",
+        },
+      ],
+      specialClosedDays: ["mon"],
     },
     {
       time: "18:30",
@@ -220,8 +267,9 @@ export const cityHall: Area = {
   pitfalls: [
     {
       severity: "danger",
-      title: "月曜日はこのコースが成立しません",
-      body: "徳寿宮・守門将交代式・ソウル市立美術館・ソウル図書館がすべて休館。月曜しかスケジュールが空いていない日は、江南か聖水に振ってください。",
+      title:
+        "市庁・貞洞1日コースは、徳寿宮など主要4施設が休館する月曜日には成立しません",
+      body: "月曜日は徳寿宮・守門将交代式・ソウル市立美術館・ソウル図書館がすべて休館するため、市庁・貞洞の1日コースは月曜には成立しません。月曜しかスケジュールが空いていない場合は、江南（ほぼ全施設が年中無休）か聖水エリアに振り替えてください。",
     },
     {
       severity: "info",

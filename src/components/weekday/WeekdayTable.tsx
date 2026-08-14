@@ -2,8 +2,9 @@ import type { FacilityWeekRow, OpenState } from "@/content/types";
 import {
   WEEKDAYS,
   WEEKDAY_JA,
+  WEEKDAY_JA_FULL,
   OPEN_STATE_SYMBOL,
-  OPEN_STATE_LABEL,
+  OPEN_STATE_LABEL_FORMAL,
 } from "@/lib/weekday";
 
 const CELL_BG: Record<OpenState, string> = {
@@ -52,6 +53,10 @@ export function WeekdayTable({ rows }: { rows: FacilityWeekRow[] }) {
               </th>
               {WEEKDAYS.map((d) => {
                 const state = row.states[d];
+                // Self-contained label: facility name + weekday + state.
+                // Quoted out of context this still reads as a complete fact,
+                // which helps both screen readers and AI crawlers.
+                const label = `${row.facility}は${WEEKDAY_JA_FULL[d]}は${OPEN_STATE_LABEL_FORMAL[state]}`;
                 return (
                   <td
                     key={d}
@@ -59,7 +64,8 @@ export function WeekdayTable({ rows }: { rows: FacilityWeekRow[] }) {
                     style={{ borderColor: "var(--line)" }}
                   >
                     <span
-                      aria-label={OPEN_STATE_LABEL[state]}
+                      aria-label={label}
+                      title={label}
                       className="inline-flex items-center justify-center w-8 h-8 rounded-full t-data"
                       style={{
                         background: CELL_BG[state],

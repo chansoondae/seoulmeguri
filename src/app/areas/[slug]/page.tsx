@@ -9,6 +9,7 @@ import { MeguriLine } from "@/components/course/MeguriLine";
 import { StopCard } from "@/components/course/StopCard";
 import { PitfallBox } from "@/components/ui/PitfallBox";
 import { UpdatedAt } from "@/components/ui/UpdatedAt";
+import { stopToPlaceJsonLd } from "@/lib/placeJsonLd";
 
 type Params = { slug: string };
 
@@ -54,6 +55,10 @@ export default async function AreaPage({
 
   const color = KEY_COLOR_VAR[area.keyColor];
   const softColor = KEY_COLOR_SOFT_VAR[area.keyColor];
+
+  const placesJsonLd = [...area.stops, ...area.extras]
+    .map((s) => stopToPlaceJsonLd(s, area.updatedAt))
+    .filter((v): v is Record<string, unknown> => v !== null);
 
   return (
     <>
@@ -177,6 +182,14 @@ export default async function AreaPage({
           </p>
         </div>
       </section>
+
+      {placesJsonLd.map((p, i) => (
+        <script
+          key={`place-${i}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(p) }}
+        />
+      ))}
     </>
   );
 }

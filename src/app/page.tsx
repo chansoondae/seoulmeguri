@@ -1,11 +1,16 @@
 import { AreaCard } from "@/components/area/AreaCard";
 import { WeekdayChecker } from "@/components/weekday/WeekdayChecker";
+import { WeekdayMatrixSummary } from "@/components/weekday/WeekdayMatrixSummary";
 import { InstagramBanner } from "@/components/instagram/InstagramBanner";
 import { areas } from "@/content/areas";
 import { guides } from "@/content/guides";
+import { courses } from "@/content/courses";
+import { KEY_COLOR_VAR, KEY_COLOR_SOFT_VAR } from "@/lib/keyColor";
+import { buildWeekdayDatasetJsonLd } from "@/lib/weekdayDatasetJsonLd";
 import Link from "next/link";
 
 export default function HomePage() {
+  const weekdayDatasetJsonLd = buildWeekdayDatasetJsonLd();
   return (
     <>
       {/* Hero */}
@@ -87,6 +92,7 @@ export default function HomePage() {
       {/* Weekday checker — signature */}
       <section id="weekday" className="container-narrow py-14 md:py-20">
         <WeekdayChecker />
+        <WeekdayMatrixSummary />
       </section>
 
       {/* Areas */}
@@ -103,6 +109,53 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Theme courses */}
+      {courses.length > 0 ? (
+        <section id="courses" className="container-narrow py-14 md:py-20">
+          <header className="mb-6 md:mb-8">
+            <p className="t-caption">テーマ別コース</p>
+            <h2 className="t-display-m mt-1">
+              目的から選ぶ、歩いてつながる1日
+            </h2>
+          </header>
+          <ul className="grid gap-4">
+            {courses.map((c) => {
+              const color = KEY_COLOR_VAR[c.keyColor];
+              const soft = KEY_COLOR_SOFT_VAR[c.keyColor];
+              return (
+                <li key={c.slug}>
+                  <Link
+                    href={`/courses/${c.slug}`}
+                    className="block rounded-2xl border p-5 md:p-6 no-underline overflow-hidden relative"
+                    style={{
+                      borderColor: "var(--line)",
+                      background: `linear-gradient(120deg, ${color} 0%, ${soft} 40%, var(--paper) 100%)`,
+                    }}
+                  >
+                    <p className="t-caption">
+                      {c.category === "kpop"
+                        ? "K-POP"
+                        : c.category === "history"
+                        ? "歴史"
+                        : c.category === "cafe"
+                        ? "カフェ"
+                        : "買い物"}
+                    </p>
+                    <h3 className="t-display-m mt-1 text-ink">{c.tagline}</h3>
+                    <p
+                      className="t-body-s mt-2 max-w-[36rem]"
+                      style={{ color: "var(--ink)" }}
+                    >
+                      {c.intro}
+                    </p>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
 
       {/* Guides */}
       <section className="container-narrow py-14 md:py-20">
@@ -124,7 +177,11 @@ export default function HomePage() {
                 }}
               >
                 <p className="t-caption">
-                  {g.category === "money" ? "お金" : "準備"}
+                  {g.category === "money"
+                    ? "お金"
+                    : g.category === "shopping"
+                    ? "お土産"
+                    : "準備"}
                 </p>
                 <h3 className="t-title mt-1 text-ink">{g.title}</h3>
                 <p
@@ -164,6 +221,13 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(weekdayDatasetJsonLd),
+        }}
+      />
     </>
   );
 }

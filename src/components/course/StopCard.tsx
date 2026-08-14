@@ -11,6 +11,14 @@ export function StopCard({ stop, index }: { stop: Stop; index: number }) {
         background: "var(--paper)",
       }}
     >
+      {stop.eyebrow ? (
+        <p
+          className="t-caption mb-1"
+          style={{ color: "var(--accent)", fontWeight: 700 }}
+        >
+          {stop.eyebrow}
+        </p>
+      ) : null}
       <header className="flex items-baseline gap-3 flex-wrap">
         <span
           className="t-data rounded-full px-2.5 py-1"
@@ -41,7 +49,30 @@ export function StopCard({ stop, index }: { stop: Stop; index: number }) {
         </p>
       ) : null}
 
+      {stop.story ? (
+        <p
+          className="t-body-s mt-3"
+          style={{
+            paddingLeft: "12px",
+            borderLeft: "3px solid var(--brand-orchid)",
+            color: "var(--ink-2)",
+          }}
+        >
+          {stop.story}
+        </p>
+      ) : null}
+
       <p className="t-body-s mt-3">{stop.blurb}</p>
+
+      {stop.address ? (
+        <p
+          className="t-caption mt-2"
+          style={{ color: "var(--ink-2)" }}
+        >
+          <span aria-hidden>📍 </span>
+          {stop.address}
+        </p>
+      ) : null}
 
       <dl className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 t-body-s">
         {stop.hours ? (

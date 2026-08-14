@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { areas } from "@/content/areas";
 import { guides } from "@/content/guides";
+import { courses } from "@/content/courses";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...areas.map((a) => ({
       url: `${SITE_URL}/areas/${a.slug}`,
       lastModified: new Date(a.updatedAt),
+      changeFrequency: "monthly" as const,
+    })),
+    ...courses.map((c) => ({
+      url: `${SITE_URL}/courses/${c.slug}`,
+      lastModified: new Date(c.updatedAt),
       changeFrequency: "monthly" as const,
     })),
     ...guides.map((g) => ({
