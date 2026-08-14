@@ -38,7 +38,8 @@ export function PitfallBox({ pitfall }: { pitfall: Pitfall }) {
           className="inline-flex items-center justify-center w-6 h-6 rounded-full text-sm"
           style={{
             background: s.border,
-            color: pitfall.severity === "danger" ? "#fff" : "var(--ink)",
+            color:
+              pitfall.severity === "danger" ? "var(--paper)" : "var(--ink)",
           }}
         >
           {s.icon}

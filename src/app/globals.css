@@ -59,6 +59,38 @@
 }
 
 /* -------------------------------------------------- */
+/* Dark mode                                           */
+/* -------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surfaces flip to deep warm plum; brand pastels stay bright so
+       existing "ink text on brand surface" patterns keep AA contrast. */
+    --paper: #14101a;
+    --paper-2: #1e1826;
+    --ink: #f2ecf5;
+    --ink-2: #b8afc2;
+    --ink-3: #7d7488;
+    --line: #2a2333;
+
+    /* Accent & link brightened for AA on dark paper */
+    --accent: #ff5e97;
+    --accent-ink: #1a0f14;
+    --link: #8bb4ff;
+    --warn: #f6a06b;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: var(--brand-blush);
+    color: #14101a;
+  }
+}
+
+/* -------------------------------------------------- */
 /* Base                                                */
 /* -------------------------------------------------- */
 
