@@ -57,7 +57,7 @@ export default function HomePage() {
             エリアごとの「行ける日」と「行けない日」、ぜんぶ書いてます。
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="relative z-10 mt-8 flex flex-wrap gap-3">
             <Link
               href="#weekday"
               className="inline-flex items-center gap-2 rounded-full px-5 py-3 t-title no-underline"
@@ -99,7 +99,7 @@ export default function HomePage() {
         {/* Decorative meguri ribbon */}
         <svg
           aria-hidden
-          className="absolute right-[-20px] bottom-[-40px] opacity-70"
+          className="pointer-events-none absolute right-[-20px] bottom-[-40px] opacity-70"
           width="220"
           height="220"
           viewBox="0 0 220 220"
