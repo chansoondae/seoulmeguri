@@ -283,4 +283,6 @@ export const cityHall: Area = {
     },
   ],
   updatedAt: "2026-08-13",
+  relatedCourses: ["bts-seoul"],
+  relatedGuides: ["souvenir", "exchange"],
 };

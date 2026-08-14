@@ -326,4 +326,6 @@ export const btsSeoul: Course = {
       a: "HYBE社屋だけ気をつけてください。働いている人がいる場所です。それ以外は普通の観光地なので、いつも通りで大丈夫。",
     },
   ],
+  relatedAreas: ["city-hall", "gangnam"],
+  relatedGuides: ["souvenir", "exchange"],
 };

@@ -215,4 +215,6 @@ export const gangnam: Area = {
     },
   ],
   updatedAt: "2026-08-13",
+  relatedCourses: ["bts-seoul"],
+  relatedGuides: ["souvenir", "exchange"],
 };

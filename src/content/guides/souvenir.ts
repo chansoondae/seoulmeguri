@@ -205,4 +205,6 @@ export const souvenir: Guide = {
       ],
     },
   ],
+  relatedGuides: ["exchange"],
+  relatedAreas: ["city-hall", "hannam"],
 };

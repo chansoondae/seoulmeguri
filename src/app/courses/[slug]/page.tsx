@@ -9,6 +9,7 @@ import { MeguriLine } from "@/components/course/MeguriLine";
 import { StopCard } from "@/components/course/StopCard";
 import { PitfallBox } from "@/components/ui/PitfallBox";
 import { UpdatedAt } from "@/components/ui/UpdatedAt";
+import { RelatedLinks } from "@/components/related/RelatedLinks";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { hasCourseOgImage } from "@/lib/courseOg";
 import { stopToPlaceJsonLd } from "@/lib/placeJsonLd";
@@ -396,6 +397,13 @@ export default async function CoursePage({
 
       {/* FAQ */}
       {course.faq && course.faq.length > 0 ? <Faq faq={course.faq} /> : null}
+
+      {/* Related */}
+      <RelatedLinks
+        areaSlugs={course.relatedAreas}
+        guideSlugs={course.relatedGuides}
+        courseSlugs={course.relatedCourses}
+      />
 
       {/* Updated & Sources */}
       <section className="container-narrow py-12">

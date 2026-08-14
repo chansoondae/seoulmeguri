@@ -7,7 +7,23 @@ import { guides } from "@/content/guides";
 import { courses } from "@/content/courses";
 import { KEY_COLOR_VAR, KEY_COLOR_SOFT_VAR } from "@/lib/keyColor";
 import { buildWeekdayDatasetJsonLd } from "@/lib/weekdayDatasetJsonLd";
+import { isRecent } from "@/lib/isRecent";
 import Link from "next/link";
+
+function NewBadge() {
+  return (
+    <span
+      className="t-caption inline-flex items-center rounded-full px-2 py-0.5 ml-2 align-middle"
+      style={{
+        background: "var(--accent)",
+        color: "var(--accent-ink)",
+        lineHeight: 1,
+      }}
+    >
+      NEW
+    </span>
+  );
+}
 
 export default function HomePage() {
   const weekdayDatasetJsonLd = buildWeekdayDatasetJsonLd();
@@ -62,8 +78,21 @@ export default function HomePage() {
                 border: "1px solid var(--line)",
               }}
             >
-              エリアを選ぶ
+              エリアで選ぶ
             </Link>
+            {courses.length > 0 ? (
+              <Link
+                href="#courses"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-3 t-title no-underline"
+                style={{
+                  background: "var(--paper)",
+                  color: "var(--ink)",
+                  border: "1px solid var(--line)",
+                }}
+              >
+                テーマで選ぶ
+              </Link>
+            ) : null}
           </div>
         </div>
 
@@ -95,10 +124,10 @@ export default function HomePage() {
         <WeekdayMatrixSummary />
       </section>
 
-      {/* Areas */}
-      <section id="areas" className="container-narrow py-8 md:py-12">
+      {/* Areas — 場所から */}
+      <section id="areas" className="container-narrow py-14 md:py-20">
         <header className="mb-6 md:mb-8">
-          <p className="t-caption">エリアを選ぶ</p>
+          <p className="t-caption">エリアで選ぶ ／ 場所から</p>
           <h2 className="t-display-m mt-1">
             半日〜1日で、無理なく回れる3エリア
           </h2>
@@ -110,39 +139,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Theme courses */}
+      {/* Theme courses — 目的から */}
       {courses.length > 0 ? (
         <section id="courses" className="container-narrow py-14 md:py-20">
           <header className="mb-6 md:mb-8">
-            <p className="t-caption">テーマ別コース</p>
+            <p className="t-caption">テーマで選ぶ ／ 目的から</p>
             <h2 className="t-display-m mt-1">
-              目的から選ぶ、歩いてつながる1日
+              「行きたい理由」でまとめた、歩いてつながる1日
             </h2>
+            <p className="t-body-s mt-3 max-w-[36rem]" style={{ color: "var(--ink-2)" }}>
+              エリアをまたいで、テーマで一本につなげたコース。K-POPの聖地、歴史、カフェ——目的が決まっている人はここから。
+            </p>
           </header>
           <ul className="grid gap-4">
             {courses.map((c) => {
               const color = KEY_COLOR_VAR[c.keyColor];
               const soft = KEY_COLOR_SOFT_VAR[c.keyColor];
+              const categoryLabel =
+                c.category === "kpop"
+                  ? "K-POP"
+                  : c.category === "history"
+                  ? "歴史"
+                  : c.category === "cafe"
+                  ? "カフェ"
+                  : "買い物";
               return (
                 <li key={c.slug}>
                   <Link
                     href={`/courses/${c.slug}`}
-                    className="block rounded-2xl border p-5 md:p-6 no-underline overflow-hidden relative"
+                    className="block rounded-2xl border p-5 md:p-6 no-underline overflow-hidden relative transition-transform hover:-translate-y-0.5"
                     style={{
                       borderColor: "var(--line)",
                       background: `linear-gradient(120deg, ${color} 0%, ${soft} 40%, var(--paper) 100%)`,
                     }}
                   >
-                    <p className="t-caption">
-                      {c.category === "kpop"
-                        ? "K-POP"
-                        : c.category === "history"
-                        ? "歴史"
-                        : c.category === "cafe"
-                        ? "カフェ"
-                        : "買い物"}
-                    </p>
-                    <h3 className="t-display-m mt-1 text-ink">{c.tagline}</h3>
+                    <p className="t-caption">{categoryLabel}</p>
+                    <h3 className="t-display-m mt-1 text-ink">
+                      {c.tagline}
+                      {isRecent(c.updatedAt) ? <NewBadge /> : null}
+                    </h3>
                     <p
                       className="t-body-s mt-2 max-w-[36rem]"
                       style={{ color: "var(--ink)" }}
@@ -170,7 +205,7 @@ export default function HomePage() {
             <li key={g.slug}>
               <Link
                 href={`/guides/${g.slug}`}
-                className="block rounded-2xl border p-5 md:p-6 no-underline"
+                className="block rounded-2xl border p-5 md:p-6 no-underline transition-transform hover:-translate-y-0.5"
                 style={{
                   borderColor: "var(--line)",
                   background: "var(--paper)",
@@ -183,7 +218,10 @@ export default function HomePage() {
                     ? "お土産"
                     : "準備"}
                 </p>
-                <h3 className="t-title mt-1 text-ink">{g.title}</h3>
+                <h3 className="t-title mt-1 text-ink">
+                  {g.title}
+                  {isRecent(g.updatedAt) ? <NewBadge /> : null}
+                </h3>
                 <p
                   className="t-body-s mt-2"
                   style={{ color: "var(--ink-2)" }}

@@ -86,6 +86,8 @@ export interface Area {
   stops: Stop[];
   extras: Stop[];
   updatedAt: string;
+  relatedCourses?: string[];
+  relatedGuides?: string[];
 }
 
 export interface SouvenirItem {
@@ -140,6 +142,9 @@ export interface Guide {
   category: GuideCategory;
   sections: GuideSection[];
   updatedAt: string;
+  relatedGuides?: string[];
+  relatedAreas?: string[];
+  relatedCourses?: string[];
 }
 
 export type CourseCategory = "kpop" | "history" | "cafe" | "shopping";
@@ -176,4 +181,7 @@ export interface Course {
   exclusion?: CourseExclusion;
   faq?: FaqEntry[];
   updatedAt: string;
+  relatedAreas?: string[];
+  relatedGuides?: string[];
+  relatedCourses?: string[];
 }

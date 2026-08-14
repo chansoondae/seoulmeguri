@@ -9,6 +9,7 @@ import { MeguriLine } from "@/components/course/MeguriLine";
 import { StopCard } from "@/components/course/StopCard";
 import { PitfallBox } from "@/components/ui/PitfallBox";
 import { UpdatedAt } from "@/components/ui/UpdatedAt";
+import { RelatedLinks } from "@/components/related/RelatedLinks";
 import { stopToPlaceJsonLd } from "@/lib/placeJsonLd";
 
 type Params = { slug: string };
@@ -165,6 +166,12 @@ export default async function AreaPage({
           </div>
         </section>
       ) : null}
+
+      {/* Related */}
+      <RelatedLinks
+        courseSlugs={area.relatedCourses}
+        guideSlugs={area.relatedGuides}
+      />
 
       {/* Updated & Sources */}
       <section className="container-narrow py-12">

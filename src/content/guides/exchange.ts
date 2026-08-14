@@ -80,4 +80,5 @@ export const exchange: Guide = {
       ],
     },
   ],
+  relatedGuides: ["souvenir"],
 };

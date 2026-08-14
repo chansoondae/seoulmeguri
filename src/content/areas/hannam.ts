@@ -230,4 +230,5 @@ export const hannam: Area = {
     },
   ],
   updatedAt: "2026-08-13",
+  relatedGuides: ["souvenir", "exchange"],
 };

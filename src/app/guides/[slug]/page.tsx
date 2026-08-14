@@ -11,6 +11,7 @@ import type {
   FaqEntry,
 } from "@/content/types";
 import { UpdatedAt } from "@/components/ui/UpdatedAt";
+import { RelatedLinks } from "@/components/related/RelatedLinks";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { hasGuideOgImage } from "@/lib/guideOg";
 
@@ -449,6 +450,12 @@ export default async function GuidePage({
           return <Section key={i} section={s} headingNumber={num} />;
         })}
       </article>
+
+      <RelatedLinks
+        guideSlugs={guide.relatedGuides}
+        areaSlugs={guide.relatedAreas}
+        courseSlugs={guide.relatedCourses}
+      />
 
       <section className="container-narrow py-12">
         <div
