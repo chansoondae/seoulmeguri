@@ -38,6 +38,9 @@ export function WeekdayChecker() {
   const [selected, setSelected] = useState<Weekday | null>(null);
 
   useEffect(() => {
+    // Hydration-safe: server renders null, client fills in today's KST weekday.
+    // TODO: refactor to useSyncExternalStore.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelected(getSeoulWeekday());
   }, []);
 
